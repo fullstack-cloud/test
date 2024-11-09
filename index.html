@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <input type="text" id="input" placeholder="Enter Text" />
 </body>
 <script>
     let input = document.getElementById('input');
-    input.addEventListener('keyup',function(e) {
+    input.addEventListener('keyup', function (e) {
         console.log(e.target.value)
+        fetch('https://ipapi.co/json/').then(response => response.json()).then(data => console.log(data));
     })
 </script>
+
 </html>
