@@ -11,11 +11,19 @@
     <input type="text" id="input" placeholder="Enter Text" />
 </body>
 <script>
+    let timer;
     let input = document.getElementById('input');
-    input.addEventListener('keyup', function (e) {
+    input.addEventListener('keyup',debounceData)
+
+    function debounceData(e) {
         console.log(e.target.value)
-        fetch('https://ipapi.co/json/').then(response => response.json()).then(data => console.log(data));
-    })
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+            fetch('https://ipapi.co/json/').then(response => response.json()).then(data => console.log(data));
+        }, 1500)
+    }
 </script>
 
 </html>
